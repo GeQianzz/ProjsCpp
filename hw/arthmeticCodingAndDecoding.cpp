@@ -62,12 +62,12 @@ string decodeRes(vector<vector<double>>& distri, double code, int length){
 
     for(int i = 0; i < length; i++){
         double total = end - start;
-        for(int j = 0; j < size; j++){
-            double lower = start + total * distri[j][0];
-            double upper = start + total * distri[j][1];
+        for(int t = 0; t < size; t++){
+            double lower = start + total * distri[t][0];
+            double upper = start + total * distri[t][1];
             
             if(value >= lower && value < upper){
-                char c = 'A' + j;
+                char c = 'A' + t;
                 result += c;
                 end = upper;
                 start = lower;
@@ -79,7 +79,9 @@ string decodeRes(vector<vector<double>>& distri, double code, int length){
 }
 
 int main(){
+    // set precision
     cout << setprecision(8);
+
     double s[4] = {0.1, 0.4, 0.2, 0.3};
     vector<vector<double>> distri; 
     vector<double> res = {0, 1};
@@ -87,6 +89,7 @@ int main(){
     assignDistribute(distri, s);
     printDistri(distri);
 
+    // input string 
     string input;
     cout << "Please input your key string" << endl;
     cin >> input;
@@ -95,8 +98,8 @@ int main(){
     double codeRes = res[0];
     cout << "code is: " << codeRes << endl;
 
-    string decoded = decodeRes(distri, codeRes, input.length());
-    cout << "decoded string is: " << decoded << endl;
+    string origin = decodeRes(distri, codeRes, input.length());
+    cout << "decoded string is: " << origin << endl;
 
     return 0;
 }
