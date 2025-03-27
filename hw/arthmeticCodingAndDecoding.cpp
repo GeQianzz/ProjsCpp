@@ -68,7 +68,7 @@ string decodeRes(vector<vector<double>>& distri, double code, int length){
             
             if(value >= lower && value < upper){
                 char c = 'A' + t;
-                result += c;
+                result += c; // create res string
                 end = upper;
                 start = lower;
                 break;
